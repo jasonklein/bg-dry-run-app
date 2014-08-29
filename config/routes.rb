@@ -1,4 +1,16 @@
 BgDryRunApp::Application.routes.draw do
+  get "matches/index"
+
+  get "matches/new"
+
+  get "matches/create"
+
+  get "matches/show"
+
+  get "matches/edit"
+
+  get "matches/destroy"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
