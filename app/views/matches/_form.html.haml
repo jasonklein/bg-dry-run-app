@@ -1,0 +1,8 @@
+= form_for @match do |f|
+  = f.label :name
+  = f.text_field :name
+  %br
+  = f.label :film
+  = f.file_field :film
+  %br
+  = f.submit
