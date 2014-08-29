@@ -1,3 +1,10 @@
 %h1 Matches#index
 %br
 = link_to "Add Match", new_match_path
+%br
+%br
+- @matches.each do |match|
+  = match.name
+  %br
+  = video_tag match.film.url
+  %br

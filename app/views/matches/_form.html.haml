@@ -1,4 +1,7 @@
 = form_for @match do |f|
+  - if @match.errors.any?
+    .errors
+      = @match.errors.full_messages.join(', ').downcase.capitalize
   = f.label :name
   = f.text_field :name
   %br

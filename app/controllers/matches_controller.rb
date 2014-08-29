@@ -9,6 +9,12 @@ class MatchesController < ApplicationController
   end
 
   def create
+    @match = Match.new(params[:match])
+    if @match.save
+      redirect_to matches_path, notice: "Match #{@match.name} saved."
+    else
+      render 'new'
+    end
   end
 
   def show
