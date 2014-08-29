@@ -11,12 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140829134221) do
+ActiveRecord::Schema.define(:version => 20140829143240) do
+
+  create_table "clips", :force => true do |t|
+    t.integer  "match_id"
+    t.string   "video"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "matches", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "film"
+    t.string   "video"
     t.string   "name"
   end
 

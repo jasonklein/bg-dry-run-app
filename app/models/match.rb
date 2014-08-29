@@ -1,5 +1,5 @@
 class Match < ActiveRecord::Base
-  attr_accessible :film, :name
+  attr_accessible :video, :name
 
-  mount_uploader :film, FilmUploader
+  mount_uploader :video, MatchVideoUploader
 end
