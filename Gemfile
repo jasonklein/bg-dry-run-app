@@ -12,6 +12,8 @@ gem 'fog', '~> 1.3.1'
 
 gem 'json'
 gem 'aws-sdk'
+gem 'httparty'
+gem 'streamio-ffmpeg'
 
 gem 'figaro'
 
