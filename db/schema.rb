@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140901121231) do
+ActiveRecord::Schema.define(:version => 20140901142007) do
 
   create_table "clips", :force => true do |t|
     t.integer  "match_id"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20140901121231) do
   create_table "matches", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "video"
     t.string   "name"
+    t.datetime "play_date"
   end
 
   create_table "videos", :force => true do |t|
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20140901121231) do
     t.integer  "height"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "camera_name"
   end
 
   add_index "videos", ["match_id"], :name => "index_videos_on_match_id"
