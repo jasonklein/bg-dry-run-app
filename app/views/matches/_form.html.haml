@@ -5,7 +5,11 @@
   = f.label :name
   = f.text_field :name
   %br
-  = f.label :video
-  = f.file_field :video
+  = f.fields_for :videos do |i|
+    = i.label :camera_name
+    = i.text_field :camera_name
+    %br
+    = i.label :location
+    = i.file_field :location
   %br
   = f.submit
