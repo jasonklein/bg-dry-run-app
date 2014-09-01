@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140829143240) do
+ActiveRecord::Schema.define(:version => 20140901121231) do
 
   create_table "clips", :force => true do |t|
     t.integer  "match_id"
@@ -26,5 +26,25 @@ ActiveRecord::Schema.define(:version => 20140829143240) do
     t.string   "video"
     t.string   "name"
   end
+
+  create_table "videos", :force => true do |t|
+    t.integer  "match_id"
+    t.string   "location"
+    t.string   "container"
+    t.float    "duration"
+    t.datetime "creation_time"
+    t.integer  "bitrate"
+    t.string   "video_stream"
+    t.string   "audio_stream"
+    t.string   "video_codec"
+    t.string   "audio_channels"
+    t.integer  "audio_sample_rate"
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "videos", ["match_id"], :name => "index_videos_on_match_id"
 
 end

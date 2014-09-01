@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  match: 
+  location: MyString
+  container: MyString
+  duration: 1.5
+  creation_time: 2014-09-01 13:12:31
+  bitrate: 1
+  video_stream: MyString
+  audio_stream: MyString
+  video_codec: MyString
+  audio_channels: MyString
+  audio_sample_rate: 1
+  width: 1
+  height: 1
+
+two:
+  match: 
+  location: MyString
+  container: MyString
+  duration: 1.5
+  creation_time: 2014-09-01 13:12:31
+  bitrate: 1
+  video_stream: MyString
+  audio_stream: MyString
+  video_codec: MyString
+  audio_channels: MyString
+  audio_sample_rate: 1
+  width: 1
+  height: 1
