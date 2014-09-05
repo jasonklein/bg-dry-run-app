@@ -22,19 +22,25 @@ class MatchesController < ApplicationController
 
     @match = Match.new params[:match]
 
-    set_ffmpeg_binary
-    path_to_video = set_ffmpeg_path_to_video(@match)
-    ffmpeg_data = get_ffmpeg_data(path_to_video)
-    add_metadata_to_video(@match.videos.first, ffmpeg_data)
+    if @match.videos.first.location.file
+      set_ffmpeg_binary
+      path_to_video = set_ffmpeg_path_to_video(@match)
+      ffmpeg_data = get_ffmpeg_data(path_to_video)
+      add_metadata_to_video(@match.videos.first, ffmpeg_data)
+    end
     
     if @match.save
       redirect_to matches_path, notice: "Match #{@match.name} saved."
     else
+
+      more_players_count = 10 - @match.players.count
+      more_players_count.times { @match.players.build }
       render 'new'
     end
   end
 
   def show
+    @match = Match.find params[:id]
   end
 
   def edit

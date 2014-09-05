@@ -1,2 +1,15 @@
-%h1 Matches#show
-%p Find me in app/views/matches/show.html.haml
+%h1
+  = @match.name
+%br
+%h2 Players
+- @match.players.each do |player|
+  %h3
+    = player.name
+  %h4 Clips
+  %br
+  - player.clips.each do |clip|
+    %div
+      = video_tag clip.video, controls: true
+    %br
+  %br
+  %br

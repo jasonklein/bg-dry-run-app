@@ -4,13 +4,5 @@
 %br
 %br
 - @matches.each do |match|
-  = match.name
-  %br
-  / = video_tag match.video.url
-  %br
-  %h3 Clips
-  %br
-  - match.clips.each do |clip|
-    %div
-      = video_tag clip.video, controls: true
-    %br
+  = link_to match.name, match
+  

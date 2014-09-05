@@ -3,7 +3,7 @@
     .errors
       = @match.errors.full_messages.join(', ').downcase.capitalize
   = f.label :name
-  = f.text_field :name
+  = f.text_field :name, required: true
   %br
   %br
   = label_tag "Add Video"
@@ -14,7 +14,7 @@
     = v.text_field :camera_name
     %br
     = v.label :location
-    = v.file_field :location
+    = v.file_field :location, required: true
   %br
   %br
   = label_tag "Add Players"
@@ -26,7 +26,7 @@
     = p.label :first_name
     = p.text_field :first_name
     = p.label :last_name
-    = p.text_field :first_name
+    = p.text_field :last_name
     %br
   %br
   = f.submit
