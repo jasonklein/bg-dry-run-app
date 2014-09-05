@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140905195240) do
+ActiveRecord::Schema.define(:version => 20140905223350) do
 
   create_table "base_modules", :force => true do |t|
     t.string   "name"
@@ -33,10 +33,12 @@ ActiveRecord::Schema.define(:version => 20140905195240) do
     t.boolean  "transcoded",     :default => false
     t.integer  "base_module_id"
     t.datetime "tag_time"
+    t.integer  "video_id"
   end
 
   add_index "clips", ["base_module_id"], :name => "index_clips_on_base_module_id"
   add_index "clips", ["player_id"], :name => "index_clips_on_player_id"
+  add_index "clips", ["video_id"], :name => "index_clips_on_video_id"
 
   create_table "matches", :force => true do |t|
     t.datetime "created_at", :null => false
