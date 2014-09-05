@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140905143727) do
+ActiveRecord::Schema.define(:version => 20140905150412) do
 
   create_table "base_modules", :force => true do |t|
     t.string   "name"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(:version => 20140905143727) do
     t.integer  "height"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
-    t.string   "camera_name"
+    t.string   "camera"
   end
 
   add_index "videos", ["match_id"], :name => "index_videos_on_match_id"

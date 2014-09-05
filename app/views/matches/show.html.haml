@@ -1,6 +1,20 @@
 %h1
   = @match.name
 %br
+%h2 Additions
+= link_to "Add Video", new_match_video_path(@match)
+= link_to "Add Base Module Report", new_match_base_module_path(@match)
+= link_to "Add Player", new_match_player_path(@match)
+%h2 Videos
+%ul
+  - @match.videos.each do |video|
+    %li
+      = video.camera
+%h2 Base Modules
+%ul
+  - @match.base_modules.each do |bm|
+    %li
+      = bm.name
 %h2 Players
 - @match.players.each do |player|
   %h3

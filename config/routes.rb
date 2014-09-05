@@ -1,5 +1,11 @@
 BgDryRunApp::Application.routes.draw do
   
+  get "players/new"
+
+  get "base_modules/new"
+
+  get "videos/new"
+
   get "matches/index"
 
   get "matches/new"
@@ -12,7 +18,11 @@ BgDryRunApp::Application.routes.draw do
 
   get "matches/destroy"
 
-  resources :matches
+  resources :matches do
+    resources :players
+    resources :base_modules
+    resources :videos
+  end
 
   root to: 'matches#index'
 

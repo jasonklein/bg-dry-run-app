@@ -10,8 +10,8 @@
   %br
   %br
   = f.fields_for :videos do |v|
-    = v.label :camera_name
-    = v.text_field :camera_name
+    = v.label :camera
+    = v.text_field :camera
     %br
     = v.label :location
     = v.file_field :location, required: true

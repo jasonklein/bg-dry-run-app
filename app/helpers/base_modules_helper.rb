@@ -1,0 +1,2 @@
+module BaseModulesHelper
+end
