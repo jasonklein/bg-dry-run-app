@@ -48,7 +48,7 @@ class MatchVideoUploader < CarrierWave::Uploader::Base
   def filename
     id = model.id
     date = model.creation_time.strftime "%Y-%m-%d"
-     "match-video-#{id}-#{date}-#{secure_token(10)}.#{file.extension}" if original_filename.present?
+     "bg-match-video-#{id}-#{date}-#{secure_token(10)}.#{file.extension}" if original_filename.present?
   end
 
 end

@@ -48,7 +48,7 @@ class ReportUploader < CarrierWave::Uploader::Base
   def filename
     name = model.name.downcase
     date = Date.today.strftime "%Y-%m-%d"
-     "base-module-#{name}-#{date}-#{secure_token(10)}.#{file.extension}" if original_filename.present?
+     "bg-base-module-#{name}-#{date}-#{secure_token(10)}.#{file.extension}" if original_filename.present?
   end
 
 end
