@@ -22,7 +22,7 @@ class BaseModule < ActiveRecord::Base
 
   def tags_array
     file = self.get_report
-    file.split "\r\n"
+    file.split "\n"
   end
 
   def get_report
