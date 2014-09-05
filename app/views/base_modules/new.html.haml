@@ -1,2 +1,11 @@
 %h1 BaseModules#new
-%p Find me in app/views/base_modules/new.html.haml
+
+= form_for [@match, @base_module] do |f|
+  = f.label :name
+  = f.text_field :name, size: 5, required: true
+  = f.hidden_field :match_id, value: @match.id
+  %br
+  = f.label :report
+  = f.file_field :report, required: true
+  %br
+  = f.submit
