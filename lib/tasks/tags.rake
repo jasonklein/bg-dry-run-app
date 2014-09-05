@@ -16,10 +16,14 @@ task :tags => :environment do
             clip.player_id = player.id
             clip.base_module_id = bm.id
             clip.tag_time = split_tag[2..3].join " "
-            clip.save
+            if job = make_transcoded_clip(video, clip.tag_time, upi)[:job]
+              clip.url = aws_transcoded_clip_url(clip.match_id, clip.video_id, video.location.path, upi)
+              clip.save
+              puts "Clip for #{upi} at or around #{clip.tag_time} has been saved and a transcode job created: " + JSON.pretty_generate(job)
+            else
+              puts "Transcode job for #{upi} at or around #{clip.tag_time} has NOT been saved and a transcode job has not been created."
+            end
           end
-        else
-          return
         end
       end 
     end
