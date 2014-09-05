@@ -1,0 +1,6 @@
+%h1
+  = "Base Module #{@base_module.name}"
+%ol
+  - @base_module.tags.each do |tag|
+    %li
+      = tag

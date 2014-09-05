@@ -14,7 +14,7 @@
 %ul
   - @match.base_modules.each do |bm|
     %li
-      = bm.name
+      = link_to bm.name, match_base_module_path(@match, bm)
 %h2 Players
 - @match.players.each do |player|
   %h3

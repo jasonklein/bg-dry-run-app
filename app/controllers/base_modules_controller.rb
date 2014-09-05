@@ -13,4 +13,8 @@ class BaseModulesController < ApplicationController
       render :new
     end
   end
+
+  def show
+    @base_module = BaseModule.find params[:id]
+  end
 end

@@ -45,8 +45,13 @@ class ReportUploader < CarrierWave::Uploader::Base
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    name = model.name.downcase
+    full_digest = Digest::SHA256.hexdigest(original_filename.encode('UTF-8'))
+    part_digest = full_digest[0..10]
+    date = Date.today.strftime "%Y-%m-%d"
+    file_name = "base-module-" + name + "-" + date + "-" + part_digest
+    file_name
+  end
 
 end
