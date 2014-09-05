@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140905150412) do
+ActiveRecord::Schema.define(:version => 20140905191436) do
 
   create_table "base_modules", :force => true do |t|
     t.string   "name"
     t.string   "report"
     t.integer  "match_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "report_run", :default => false
   end
 
   add_index "base_modules", ["match_id"], :name => "index_base_modules_on_match_id"
@@ -26,11 +27,14 @@ ActiveRecord::Schema.define(:version => 20140905150412) do
   create_table "clips", :force => true do |t|
     t.integer  "match_id"
     t.string   "video"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.integer  "player_id"
+    t.boolean  "transcoded",     :default => false
+    t.integer  "base_module_id"
   end
 
+  add_index "clips", ["base_module_id"], :name => "index_clips_on_base_module_id"
   add_index "clips", ["player_id"], :name => "index_clips_on_player_id"
 
   create_table "matches", :force => true do |t|

@@ -1,6 +1,6 @@
 class BaseModule < ActiveRecord::Base
   belongs_to :match
-  attr_accessible :name, :report, :match_id
+  attr_accessible :name, :report, :match_id, :report_run
 
   validates :name, :report, :match_id, presence: true
 
