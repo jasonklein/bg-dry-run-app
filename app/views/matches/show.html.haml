@@ -9,7 +9,13 @@
 %ul
   - @match.videos.each do |video|
     %li
-      = video.camera
+      %ul
+        %li
+          = video.camera
+        %li
+          = video.creation_time
+        %li
+          = pluralize video.duration_in_minutes, "minute"
 %h2 Base Modules
 %ul
   - @match.base_modules.each do |bm|
@@ -18,7 +24,7 @@
 %h2 Players
 - @match.players.each do |player|
   %h3
-    = player.name
+    = "#{player.upi}: #{player.name}"
   %h4 Clips
   %br
   - player.clips.each do |clip|
