@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140905115755) do
+ActiveRecord::Schema.define(:version => 20140905143727) do
+
+  create_table "base_modules", :force => true do |t|
+    t.string   "name"
+    t.string   "report"
+    t.integer  "match_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "base_modules", ["match_id"], :name => "index_base_modules_on_match_id"
 
   create_table "clips", :force => true do |t|
     t.integer  "match_id"
