@@ -5,11 +5,28 @@
   = f.label :name
   = f.text_field :name
   %br
-  = f.fields_for :videos do |i|
-    = i.label :camera_name
-    = i.text_field :camera_name
+  %br
+  = label_tag "Add Video"
+  %br
+  %br
+  = f.fields_for :videos do |v|
+    = v.label :camera_name
+    = v.text_field :camera_name
     %br
-    = i.label :location
-    = i.file_field :location
+    = v.label :location
+    = v.file_field :location
+  %br
+  %br
+  = label_tag "Add Players"
+  %br
+  %br
+  = f.fields_for :players do |p|
+    = p.label :upi
+    = p.text_field :upi
+    = p.label :first_name
+    = p.text_field :first_name
+    = p.label :last_name
+    = p.text_field :first_name
+    %br
   %br
   = f.submit

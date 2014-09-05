@@ -11,14 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140901142007) do
+ActiveRecord::Schema.define(:version => 20140905111936) do
 
   create_table "clips", :force => true do |t|
     t.integer  "match_id"
     t.string   "video"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "player_id"
   end
+
+  add_index "clips", ["player_id"], :name => "index_clips_on_player_id"
 
   create_table "matches", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -26,6 +29,18 @@ ActiveRecord::Schema.define(:version => 20140901142007) do
     t.string   "name"
     t.datetime "play_date"
   end
+
+  create_table "players", :force => true do |t|
+    t.string   "upi"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "match_id"
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "players", ["match_id"], :name => "index_players_on_match_id"
 
   create_table "videos", :force => true do |t|
     t.integer  "match_id"

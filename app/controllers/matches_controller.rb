@@ -7,9 +7,19 @@ class MatchesController < ApplicationController
   def new
     @match = Match.new
     @match.videos.build
+
+    10.times { @match.players.build }
+
   end
 
   def create
+    if players_attributes = params[:match][:players_attributes]
+      players_attributes.delete_if do |key,value|
+        players_attributes[key]["upi"].blank?
+      end
+      params[:match][:players_attributes] = players_attributes
+    end
+
     @match = Match.new params[:match]
 
     set_ffmpeg_binary
