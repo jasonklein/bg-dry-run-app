@@ -2,7 +2,7 @@ class Player < ActiveRecord::Base
   belongs_to :match
 
   has_many :clips
-  attr_accessible :first_name, :last_name, :upi
+  attr_accessible :first_name, :last_name, :upi, :match_id
 
   validates :upi, :first_name, :last_name, presence: true
 

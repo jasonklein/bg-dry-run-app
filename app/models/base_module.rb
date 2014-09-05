@@ -1,5 +1,7 @@
 class BaseModule < ActiveRecord::Base
   belongs_to :match
+  has_many :clips
+  
   attr_accessible :name, :report, :match_id, :report_run
 
   validates :name, :report, :match_id, presence: true
@@ -7,15 +9,15 @@ class BaseModule < ActiveRecord::Base
   mount_uploader :report, ReportUploader
 
   def tags
-    tags_meta_array = self.tags_meta_array
+    split_tags = self.split_tags
     rejoined_tags = []
-    tags_meta_array.each do |split_tag|
+    split_tags.each do |split_tag|
       rejoined_tags << split_tag.join(" ")
     end
     rejoined_tags
   end
 
-  def tags_meta_array
+  def split_tags
     tags_array = self.tags_array
     tags_array.map { |tag| tag.split "," }
   end
@@ -28,4 +30,6 @@ class BaseModule < ActiveRecord::Base
   def get_report
     open(self.report.url).read
   end
+
+  scope :unrun, where(report_run: false)
 end
