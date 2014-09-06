@@ -2,20 +2,24 @@
   - if @match.errors.any?
     .errors
       = @match.errors.full_messages.join(', ').downcase.capitalize
-  = f.label :name
+  = f.label :name, "Match Name"
   = f.text_field :name, required: true
   %br
   %br
-  = label_tag "Add Players"
+  = label_tag "Add Players (up to 10, can add more later)"
+  %br
+  %br
+  UPI is Unique Player Identifier (e.g., "A1")
   %br
   %br
   = f.fields_for :players do |p|
-    = p.label :upi, "UPI"
-    = p.text_field :upi
-    = p.label :first_name
-    = p.text_field :first_name
-    = p.label :last_name
-    = p.text_field :last_name
+    .add-player-fields
+      = p.label :upi, "UPI"
+      = p.text_field :upi
+      = p.label :first_name
+      = p.text_field :first_name
+      = p.label :last_name
+      = p.text_field :last_name
     %br
   %br
   = f.submit
