@@ -1,2 +1,11 @@
 %h1 Videos#new
-%p Find me in app/views/videos/new.html.haml
+
+= form_for [@match, @video] do |f|
+  = f.label :camera
+  = f.text_field :camera
+  = f.hidden_field :match_id, value: @match.id
+  %br
+  = f.label :location
+  = f.file_field :location, required: true
+  %br
+  = f.submit

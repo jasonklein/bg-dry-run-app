@@ -10,6 +10,4 @@ class Match < ActiveRecord::Base
   accepts_nested_attributes_for :videos
   accepts_nested_attributes_for :players
 
-  validates_length_of :videos, minimum: 1, message: "must include a video"
-
 end

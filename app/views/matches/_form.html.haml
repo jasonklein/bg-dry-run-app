@@ -6,17 +6,6 @@
   = f.text_field :name, required: true
   %br
   %br
-  = label_tag "Add Video"
-  %br
-  %br
-  = f.fields_for :videos do |v|
-    = v.label :camera
-    = v.text_field :camera
-    %br
-    = v.label :location
-    = v.file_field :location, required: true
-  %br
-  %br
   = label_tag "Add Players"
   %br
   %br
