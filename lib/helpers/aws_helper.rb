@@ -34,17 +34,19 @@ module AWSHelper
 
   def aws_output_composition(video, tag_time)
     start_time = tag_time - 5
-    if start_time < video.creation_time
-      start_time = video.creation_time
+    creation_time = video.creation_time
+
+    if start_time < creation_time
+      start_time = creation_time
     end
 
     duration = 20
-    video_end_time = video.creation_time + video.duration
+    video_end_time = creation_time + video.duration
     if (start_time + duration) > video_end_time
       start_time = video_end_time - duration
     end
 
-    start_time = start_time.strftime "%H:%M:%S"
+    start_time = (start_time - creation_time).to_s
     duration = duration.to_s
 
     [{time_span: {start_time: start_time, duration: duration}}]

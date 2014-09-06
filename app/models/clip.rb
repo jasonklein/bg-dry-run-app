@@ -5,4 +5,10 @@ class Clip < ActiveRecord::Base
   belongs_to :player
   belongs_to :base_module
   belongs_to :video
+
+  default_scope where(transcoded: true)
+
+  def self.unavailable
+    unscoped.where(transcoded: false)
+  end
 end
