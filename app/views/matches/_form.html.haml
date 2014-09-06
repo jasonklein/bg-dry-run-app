@@ -13,13 +13,13 @@
   %br
   %br
   = f.fields_for :players do |p|
-    .add-player-fields
+    .add-player-fields.hidden-add-player
       = p.label :upi, "UPI"
       = p.text_field :upi
       = p.label :first_name
       = p.text_field :first_name
       = p.label :last_name
       = p.text_field :last_name
-    %br
+      %br
   %br
   = f.submit
