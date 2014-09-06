@@ -22,14 +22,15 @@ module AWSHelper
     { key: input_key }
   end
 
-  def aws_output_key(input_key, upi)
+  def aws_output_key(input_key, tag_time)
+    tag_time = tag_time.strftime "%H-%M-%S"
     output_key_suffix = Digest::SHA256.hexdigest(input_key.encode('UTF-8'))[0..10]
-    output_key = "bg-clip-#{upi.downcase}-#{output_key_suffix}"
+    output_key = "#{tag_time}-#{output_key_suffix}"
     output_key
   end
 
-  def aws_output_key_prefix(match_id, video_id)
-    "elastic-transcoder/output/match/#{match_id}/video/#{video_id}/"
+  def aws_output_key_prefix(match_id, video_id, upi)
+    "elastic-transcoder/output/match/#{match_id}/video/#{video_id}/#{upi.downcase}/"
   end
 
   def aws_output_composition(video, tag_time)
@@ -55,7 +56,7 @@ module AWSHelper
   def make_transcoded_clip(video, tag_time, upi)
     if tag_time > video.creation_time
       clip_output = {
-        key: aws_output_key(video.location.path, upi),
+        key: aws_output_key(video.location.path, tag_time),
         preset_id: aws_web_preset_id,
         composition: aws_output_composition(video, tag_time)
       }
@@ -64,7 +65,7 @@ module AWSHelper
       aws_transcoder_client.create_job(
         pipeline_id: aws_pipeline_id,
         input: aws_input(video.location.path),
-        output_key_prefix: aws_output_key_prefix(video.match_id, video.id),
+        output_key_prefix: aws_output_key_prefix(video.match_id, video.id, upi),
         outputs: outputs
         )
     else
@@ -72,7 +73,7 @@ module AWSHelper
     end
   end
 
-  def aws_transcoded_clip_url(match_id, video_id, input_key, upi)
-    "https://s3-eu-west-1.amazonaws.com/bg-dry-run-#{Rails.env}/#{aws_output_key_prefix(match_id, video_id)}#{aws_output_key(input_key, upi)}"
+  def aws_transcoded_clip_url(match_id, video_id, input_key, upi, tag_time)
+    "https://s3-eu-west-1.amazonaws.com/bg-dry-run-#{Rails.env}/#{aws_output_key_prefix(match_id, video_id, upi)}#{aws_output_key(input_key, tag_time)}"
   end
 end
