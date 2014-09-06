@@ -18,6 +18,10 @@ gem 'streamio-ffmpeg'
 gem 'figaro'
 
 gem 'haml-rails'
+gem 'normalize-rails'
+gem 'bourbon'
+gem 'neat'
+gem 'bitters'
 
 
 # Gems used only for assets and not required

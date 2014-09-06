@@ -40,6 +40,13 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bitters (0.9.5)
+      bourbon (>= 3.1)
+      sass (>= 3.2)
+      thor
+    bourbon (4.0.2)
+      sass (~> 3.3)
+      thor
     builder (3.0.4)
     carrierwave (0.9.0)
       activemodel (>= 3.2.0)
@@ -95,10 +102,14 @@ GEM
     mime-types (1.25.1)
     multi_json (1.10.1)
     multi_xml (0.5.5)
+    neat (1.6.0)
+      bourbon (>= 3.1)
+      sass (>= 3.3)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-ssh (2.9.1)
     nokogiri (1.5.11)
+    normalize-rails (3.0.1)
     pg (0.17.1)
     polyglot (0.3.5)
     pry (0.10.1)
@@ -170,6 +181,8 @@ DEPENDENCIES
   aws-sdk
   better_errors
   binding_of_caller
+  bitters
+  bourbon
   carrierwave (= 0.9.0)
   coffee-rails (~> 3.2.1)
   figaro
@@ -178,6 +191,8 @@ DEPENDENCIES
   httparty
   jquery-rails
   json
+  neat
+  normalize-rails
   pg
   pry-rails
   pry-stack_explorer
