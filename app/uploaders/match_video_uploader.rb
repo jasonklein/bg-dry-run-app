@@ -47,8 +47,10 @@ class MatchVideoUploader < CarrierWave::Uploader::Base
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
     id = model.id
-    date = model.creation_time.strftime "%Y-%m-%d"
-     "bg-match-video-#{id}-#{date}-#{secure_token(10)}.#{file.extension}" if original_filename.present?
+    full_digest = Digest::SHA256.hexdigest(original_filename.encode('UTF-8'))
+    part_digest = full_digest[0..10]
+    date = Date.today.strftime "%Y-%m-%d"
+    "match-video-#{id}-#{date}-#{part_digest}.#{file.extension}" if original_filename.present?
   end
 
 end
