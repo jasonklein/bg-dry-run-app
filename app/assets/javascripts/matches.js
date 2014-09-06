@@ -12,13 +12,27 @@ BgApp.addIdsToAddPlayerFormFields = function() {
   });
 };
 
-BgApp.revealFirstAddPlayer = function() {
-  $("#new-player-1").removeClass("hidden-add-player");
-}
+BgApp.revealAddPlayer = function() {
+  var count = $(".visible-add-player").length + 1;
+  $("#new-player-" + count).removeClass("hidden-add-player").addClass("visible-add-player");
+};
+
+BgApp.attachAddPlayerButtonClickHandler = function() {
+  var apbutton = $("#add-player-button");
+  apbutton.click(function(ev){
+    ev.preventDefault();
+    BgApp.revealAddPlayer();
+    var recount = $(".visible-add-player").length
+    if(recount === 10) {
+      apbutton.hide();
+    };
+  });
+};
 
 BgApp.setup = function() {
   BgApp.addIdsToAddPlayerFormFields();
-  BgApp.revealFirstAddPlayer();
-}
+  BgApp.revealAddPlayer();
+  BgApp.attachAddPlayerButtonClickHandler();
+};
 
 $(BgApp.setup);
