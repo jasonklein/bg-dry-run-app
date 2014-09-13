@@ -9,6 +9,7 @@ class VideosController < ApplicationController
     video_file = video_location.tempfile
     video_path = video_file.path
     @video = Video.new params[:video]
+    @video.location = video_path
 
     if video_path
       set_ffmpeg_binary
@@ -20,6 +21,7 @@ class VideosController < ApplicationController
     else
       render :new
     end
+
   end
 
   def set_ffmpeg_binary

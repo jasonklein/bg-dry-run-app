@@ -2,7 +2,7 @@ class Video < ActiveRecord::Base
   belongs_to :match
   has_many :clips
   attr_accessible :audio_channels, :audio_sample_rate, :audio_stream, :bitrate, :container, :creation_time, :duration, :height, :video_codec, :video_stream, :width, :camera, :match_id
-  # attr_accessible :location
+  attr_accessible :location
 
   # mount_uploader :location, MatchVideoUploader
 
