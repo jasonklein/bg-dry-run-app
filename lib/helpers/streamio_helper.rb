@@ -5,7 +5,7 @@ class StreamioHelper
     when "development"
       FFMPEG.ffmpeg_binary = File.expand_path("..") + "/ffmpeg"
     when "production"
-      FFMPEG.ffmpeg_binary = File.expand_path(".") + "/vendor/ffmpeg"
+      FFMPEG.ffmpeg_binary = "ffmpeg"
     end
   end
 
