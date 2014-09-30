@@ -50,7 +50,7 @@ class MatchVideoUploader < CarrierWave::Uploader::Base
     full_digest = Digest::SHA256.hexdigest(original_filename.encode('UTF-8'))
     part_digest = full_digest[0..10]
     date = Date.today.strftime "%Y-%m-%d"
-    "match-video-#{id}-#{date}-#{part_digest}.#{file.extension}" if original_filename.present?
+    "#{date}-#{part_digest}.#{file.extension}" if original_filename.present?
   end
 
 end
