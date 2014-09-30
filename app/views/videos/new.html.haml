@@ -1,11 +1,10 @@
 %h1 Videos#new
+%h3 Which camera?
 
 = form_for [@match, @video] do |f|
   = f.label :camera
   = f.text_field :camera
-  = f.hidden_field :match_id, value: @match.id
-  %br
-  = f.label :location
-  = f.file_field :location, required: true
+  = f.hidden_field :match_id
+  = f.hidden_field :key
   %br
   = f.submit

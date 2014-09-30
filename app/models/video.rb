@@ -5,14 +5,15 @@ class Video < ActiveRecord::Base
 
   mount_uploader :location, MatchVideoUploader
 
-  validates :match_id, :location, presence: true
+  validates :match_id, presence: true
 
   def duration_in_minutes
     (self.duration / 60).round(2)
   end
 
   def set_ffmpeg_path_to_video
-    self.location.file.path
+    url = self.location.url
+    open(url).path
   end
 
   def get_ffmpeg_data
@@ -33,6 +34,7 @@ class Video < ActiveRecord::Base
     self.height = ffmpeg_data.height if ffmpeg_data.height > 0
     self.video_codec = ffmpeg_data.video_codec
     self.video_stream = ffmpeg_data.video_stream
+    self.save
   end
 
 end

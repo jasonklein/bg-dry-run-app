@@ -1,0 +1,5 @@
+%h1 Videos#new
+
+= direct_upload_form_for @uploader do |f|
+  = f.file_field :location
+  = f.submit "Upload Video"

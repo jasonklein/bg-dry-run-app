@@ -1,23 +1,5 @@
 BgDryRunApp::Application.routes.draw do
   
-  get "players/new"
-
-  get "base_modules/new"
-
-  get "videos/new"
-
-  get "matches/index"
-
-  get "matches/new"
-
-  get "matches/create"
-
-  get "matches/show"
-
-  get "matches/edit"
-
-  get "matches/destroy"
-
   resources :matches do
     resources :players
     resources :base_modules
@@ -25,6 +7,7 @@ BgDryRunApp::Application.routes.draw do
   end
 
   root to: 'matches#index'
+  get "matches/:match_id/videos/new/location", to: "locations#new", as: "direct_upload_form"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

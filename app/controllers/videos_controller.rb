@@ -1,18 +1,16 @@
 class VideosController < ApplicationController
   def new
-    @match = Match.find params[:match_id]
-    @video = Video.new
+    match_id = params[:match_id]
+    @match = Match.find match_id
+    @video = Video.new match_id: match_id, key: params[:key]
   end
 
   def create
     @video = Video.new params[:video]
 
-    if @video.location.file
+    if @video.save
       set_ffmpeg_binary
       @video.add_metadata_to_video
-    end
-
-    if @video.save
       redirect_to @video.match, notice: "Video added!"
     else
       render :new
