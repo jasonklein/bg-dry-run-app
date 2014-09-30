@@ -8,9 +8,4 @@ class StreamioHelper
       FFMPEG.ffmpeg_binary = "ffmpeg"
     end
   end
-
-  def self.get_ffmpeg_data(video_path)
-    FFMPEG::Movie.new video_path
-  end
-
 end

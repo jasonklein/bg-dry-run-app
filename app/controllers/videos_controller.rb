@@ -5,14 +5,11 @@ class VideosController < ApplicationController
   end
 
   def create
-    video_location = params[:video].delete(:location)
-    video_file = video_location.tempfile
-    video_path = video_file.path
     @video = Video.new params[:video]
 
-    if video_path
+    if @video.location.file
       set_ffmpeg_binary
-      @video.add_metadata_to_video video_path
+      @video.add_metadata_to_video
     end
 
     if @video.save
