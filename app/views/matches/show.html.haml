@@ -16,8 +16,6 @@
           = video.creation_time
         %li
           = pluralize video.duration_in_minutes, "minute"
-        %li
-          = video.location
 %h2 Base Modules
 %ul
   - @match.base_modules.each do |bm|
