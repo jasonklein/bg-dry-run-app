@@ -7,10 +7,10 @@ class VideosController < ApplicationController
   def create
     @video = Video.new params[:video]
 
-    # if @video.location.file
-    #   set_ffmpeg_binary
-    #   @video.add_metadata_to_video
-    # end
+    if @video.location.file
+      set_ffmpeg_binary
+      @video.add_metadata_to_video
+    end
 
     if @video.save
       redirect_to @video.match, notice: "Video added!"
